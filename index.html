@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absensi Sederhana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      padding: 10px;
+      margin: 0;
+    }
+    .container {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    th {
+      background: #3498db;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    .btn {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      font-size: 12px;
+    }
+    .hadir { background: #2ecc71; }
+    .izin { background: #f1c40f; }
+    .sakit { background: #e74c3c; }
+
+    /* Biar responsif di HP */
+    @media (max-width: 600px) {
+      table {
+        font-size: 12px;
+      }
+      .btn {
+        padding: 4px 6px;
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Hadir</th>
+          <th>Izin</th>
+          <th>Sakit</th>
+        </tr>
+      </thead>
+      <tbody id="absenTable">
+        <tr><td>Abdullah Muhammad Azzam</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Ahmad Faiz Alfa Farochy</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Daffa Haydar Mufid Bachtiar</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Fawwaz Naufal Kamil</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Muhammad Amir Al-Fath</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Muhammad Barra Al Farisi</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Muhammad Dzulfikar</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Muhammad Ihsan Aviandy</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Muhammad Ihsan Fathurrohman</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Muhammad Rafif Wafi</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Muhammad Zakirullah</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Nisa Lubna Fazanah Aripin</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Qonitah Fatihatur Royyan</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Rainevi Abiel Saputra</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Rifat Zaidan Ammarsyah</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Vito Areeva Muhammad</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Zhafira Lubna Qismika Qotrunnada</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Daniyal Ananda Syamsudin</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Putri Aliyya Anggara</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+        <tr><td>Raihani Qorrata A'yun</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function setAbsen(btn) {
+      let row = btn.parentNode.parentNode;
+      let buttons = row.querySelectorAll("button");
+      buttons.forEach(b => b.style.opacity = "0.3");
+      btn.style.opacity = "1";
+    }
+  </script>
+
+</body>
+</html>
