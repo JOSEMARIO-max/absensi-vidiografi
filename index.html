@@ -1,111 +1,167 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Absensi Sederhana</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
-      padding: 10px;
-      margin: 0;
-    }
-    .container {
-      max-width: 100%;
-      overflow-x: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
-      font-size: 14px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-      white-space: nowrap;
-    }
-    th {
-      background: #3498db;
-      color: white;
-    }
-    tr:nth-child(even) {
-      background: #f9f9f9;
-    }
-    .btn {
-      padding: 5px 10px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      color: white;
-      font-size: 12px;
-    }
-    .hadir { background: #2ecc71; }
-    .izin { background: #f1c40f; }
-    .sakit { background: #e74c3c; }
-
-    /* Biar responsif di HP */
-    @media (max-width: 600px) {
-      table {
-        font-size: 12px;
-      }
-      .btn {
-        padding: 4px 6px;
-        font-size: 11px;
-      }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rencana Nabung — Rp12.000.000</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#fff; --muted:#666; --accent:#2563eb;
+    --ok:#16a34a; --danger:#dc2626;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial, sans-serif;background:var(--bg);color:#111}
+  .wrap{max-width:960px;margin:0 auto;padding:14px}
+  header{margin-bottom:12px}
+  h1{font-size:18px;margin:0}
+  p.lead{font-size:13px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:1fr 300px;gap:12px}
+  @media(max-width:768px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border-radius:10px;padding:14px;box-shadow:0 3px 12px rgba(0,0,0,.08)}
+  label{font-size:13px;color:var(--muted)}
+  input,select{width:100%;padding:8px;border:1px solid #ddd;border-radius:6px;font-size:14px}
+  button{padding:8px 12px;border:none;border-radius:6px;color:white;cursor:pointer;font-size:14px}
+  .btn{background:var(--accent)}
+  .small{background:#374151;font-size:12px}
+  .progressWrap{background:#e5e7eb;height:14px;border-radius:8px;overflow:hidden}
+  .progressBar{height:100%;background:linear-gradient(90deg,var(--accent),#7c3aed);width:0}
+  .kpi{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .kpi .item{flex:1;background:#f8fafc;border:1px solid #eef2ff;padding:8px;border-radius:6px;text-align:center}
+  .big{font-weight:600;font-size:16px}
+  .muted{color:var(--muted);font-size:12px}
+  .historyRow{display:flex;justify-content:space-between;padding:6px;border-bottom:1px solid #eee;font-size:13px}
+</style>
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <h1>Rencana Nabung</h1>
+    <p class="lead">Bikin rencana tabungan sampai Rp12.000.000 dalam kurang dari setahun.</p>
+  </header>
 
-  <div class="container">
-    <table>
-      <thead>
-        <tr>
-          <th>Nama</th>
-          <th>Hadir</th>
-          <th>Izin</th>
-          <th>Sakit</th>
-        </tr>
-      </thead>
-      <tbody id="absenTable">
-        <tr><td>Abdullah Muhammad Azzam</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Ahmad Faiz Alfa Farochy</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Daffa Haydar Mufid Bachtiar</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Fawwaz Naufal Kamil</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Muhammad Amir Al-Fath</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Muhammad Barra Al Farisi</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Muhammad Dzulfikar</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Muhammad Ihsan Aviandy</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Muhammad Ihsan Fathurrohman</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Muhammad Rafif Wafi</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Muhammad Zakirullah</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Nisa Lubna Fazanah Aripin</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Qonitah Fatihatur Royyan</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Rainevi Abiel Saputra</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Rifat Zaidan Ammarsyah</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Vito Areeva Muhammad</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Zhafira Lubna Qismika Qotrunnada</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Daniyal Ananda Syamsudin</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Putri Aliyya Anggara</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-        <tr><td>Raihani Qorrata A'yun</td><td><button class="btn hadir" onclick="setAbsen(this)">✔</button></td><td><button class="btn izin" onclick="setAbsen(this)">✔</button></td><td><button class="btn sakit" onclick="setAbsen(this)">✔</button></td></tr>
-      </tbody>
-    </table>
+  <div class="grid">
+    <div class="card">
+      <form id="planForm">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+          <div style="flex:1 1 120px">
+            <label>Target</label>
+            <input id="targetInput" type="number" value="12000000">
+          </div>
+          <div style="flex:1 1 120px">
+            <label>Saldo sekarang</label>
+            <input id="currentInput" type="number" value="0">
+          </div>
+          <div style="flex:1 1 100px">
+            <label>Bulan (&lt;12)</label>
+            <select id="monthsSelect"></select>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+          <button type="submit" class="btn">Hitung & Simpan</button>
+          <button type="button" id="resetBtn" class="small">Reset</button>
+          <button type="button" id="exportBtn" class="small">Export CSV</button>
+        </div>
+      </form>
+
+      <div id="resultArea" style="display:none">
+        <div style="margin-bottom:8px">
+          <div class="muted">Target</div>
+          <div id="targetShow" class="big">Rp0</div>
+          <div class="muted">Sisa</div>
+          <div id="remainingShow" class="big">Rp0</div>
+        </div>
+
+        <div class="progressWrap"><div id="progressBar" class="progressBar"></div></div>
+        <div style="display:flex;justify-content:space-between;margin:6px 0">
+          <span class="muted">Progress: <span id="percentShow">0%</span></span>
+          <span class="muted">Bulan tersisa: <span id="monthsLeft">0</span></span>
+        </div>
+
+        <div class="kpi">
+          <div class="item"><div class="muted">/bulan</div><div id="perMonth" class="big">Rp0</div></div>
+          <div class="item"><div class="muted">/minggu</div><div id="perWeek" class="big">Rp0</div></div>
+          <div class="item"><div class="muted">/hari</div><div id="perDay" class="big">Rp0</div></div>
+        </div>
+
+        <hr>
+        <div style="display:flex;gap:6px;align-items:center;margin-bottom:8px">
+          <input id="addAmount" type="number" placeholder="Rp..." style="flex:1">
+          <button id="addBtn" class="small" type="button">Tambah</button>
+        </div>
+        <div id="historyList"></div>
+      </div>
+    </div>
+
+    <aside class="card">
+      <div class="muted">Ringkasan</div>
+      <div id="sideBox" style="font-size:14px"></div>
+    </aside>
   </div>
+</div>
 
-  <script>
-    function setAbsen(btn) {
-      let row = btn.parentNode.parentNode;
-      let buttons = row.querySelectorAll("button");
-      buttons.forEach(b => b.style.opacity = "0.3");
-      btn.style.opacity = "1";
-    }
-  </script>
-
+<script>
+function formatRp(n){return "Rp"+(Number(n)||0).toLocaleString("id-ID");}
+const KEY="nabungApp_v1";
+let state={target:12000000,current:0,months:11,history:[]};
+const monthsSelect=document.getElementById("monthsSelect");
+for(let i=1;i<12;i++){let o=document.createElement("option");o.value=i;o.textContent=i+" bulan";if(i===11)o.selected=true;monthsSelect.appendChild(o);}
+function load(){let s=localStorage.getItem(KEY);if(s)state=JSON.parse(s);}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+function reset(){localStorage.removeItem(KEY);location.reload();}
+function updateUI(){
+  document.getElementById("resultArea").style.display="block";
+  let sisa=state.target-state.current;
+  let perB=sisa/state.months;
+  document.getElementById("targetShow").textContent=formatRp(state.target);
+  document.getElementById("remainingShow").textContent=formatRp(sisa);
+  document.getElementById("perMonth").textContent=formatRp(Math.ceil(perB));
+  document.getElementById("perWeek").textContent=formatRp(Math.ceil(sisa/(state.months*4)));
+  document.getElementById("perDay").textContent=formatRp(Math.ceil(sisa/(state.months*30)));
+  let pct=(state.current/state.target*100).toFixed(1);
+  document.getElementById("percentShow").textContent=pct+"%";
+  document.getElementById("progressBar").style.width=pct+"%";
+  document.getElementById("monthsLeft").textContent=state.months;
+  document.getElementById("sideBox").innerHTML=`
+    Target: ${formatRp(state.target)}<br>
+    Saldo: ${formatRp(state.current)}<br>
+    Sisa: ${formatRp(sisa)}<br>
+    Bulan: ${state.months}
+  `;
+  // history
+  let list=document.getElementById("historyList");
+  list.innerHTML="";
+  state.history.forEach(h=>{
+    let d=document.createElement("div");
+    d.className="historyRow";
+    d.innerHTML=`<span>${h.date}</span><span>${formatRp(h.amount)}</span>`;
+    list.appendChild(d);
+  });
+}
+document.getElementById("planForm").onsubmit=e=>{
+  e.preventDefault();
+  state.target=+document.getElementById("targetInput").value;
+  state.current=+document.getElementById("currentInput").value;
+  state.months=+monthsSelect.value;
+  save();updateUI();
+};
+document.getElementById("addBtn").onclick=()=>{
+  let amt=+document.getElementById("addAmount").value;
+  if(!amt)return;
+  state.current+=amt;
+  state.history.push({amount:amt,date:new Date().toLocaleDateString()});
+  document.getElementById("addAmount").value="";
+  save();updateUI();
+};
+document.getElementById("resetBtn").onclick=reset;
+document.getElementById("exportBtn").onclick=()=>{
+  let csv="Tanggal,Setoran\n"+state.history.map(h=>`${h.date},${h.amount}`).join("\n");
+  let blob=new Blob([csv],{type:"text/csv"});
+  let a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="tabungan.csv";a.click();
+};
+// init
+load();updateUI();
+</script>
 </body>
 </html>
